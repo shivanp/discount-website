@@ -30,7 +30,7 @@ def search(item):
             print("Discount Price:\t", discPrice)
             print()
 
-    for i in range(4):
+    for i in range(1):
         try:
             driver.find_element_by_class_name('_2HG66Ah').click()
             p_element = driver.find_elements_by_class_name('_3x-5VWa')
