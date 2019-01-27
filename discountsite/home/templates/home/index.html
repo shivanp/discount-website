@@ -1212,13 +1212,17 @@ legend {
               <div class="row third">
                   <div class="input-field">
                     <div class="result-count">
-                      <span>108 </span>results found</div>
+                      <span>{{ master|length }} </span>results found</div>
                   </div>
                 </div>
             </div>
           </div>
           {% for arr in master %}
-            <p>{{ arr.0 }}</p>
+            <a href="{{ arr.1 }}">
+              <img src="{{ arr.2 }}">
+            </a>
+            <a href="{{ arr.1 }}">{{ arr.0 }}</a>
+            <p>{{ arr.6 }}% discount by {{ arr.5 }}!</p>
           {% endfor %}
         </div>
       </form>
