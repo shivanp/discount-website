@@ -20,7 +20,7 @@ def search(item):
         img = main_element.find_element_by_class_name('product-image').find_element_by_tag_name('a').find_element_by_tag_name('img').get_attribute('src')
         link = main_element.find_element_by_class_name('product-image').find_element_by_tag_name('a').get_attribute('href')
         # disc_percent = (regPrice-discPrice)/regPrice
-        arr = [name, link, img, regPrice, discPrice]
+        arr = [name, link, img, regPrice, discPrice, 'gap']
         master_arr.append(arr)        
         print("Name:\t\t", name)
         print("Link:\t\t", link)
