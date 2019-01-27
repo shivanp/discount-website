@@ -837,8 +837,8 @@ legend {
       justify-content: center;
   /* -ms-flex-align: center;
       align-items: center; */
-  margin-top: 50px;
-  background: #ffffff;
+  /* background:tomato; */
+  background: linear-gradient(to bottom, #c79ad8 0%, #a1f0d5 100%);
   padding: 15px;
   font-family: 'Lato', sans-serif;
 }
@@ -851,6 +851,7 @@ legend {
 
 .s010 form .inner-form {
   width: 100%;
+  padding-left: 50px;
 }
 
 .s010 form .inner-form .input-field {
@@ -858,23 +859,34 @@ legend {
 }
 
 
+h1 {
+  position: relative;
+  bottom: 60px;
+  color: white;
+}
+
+h2 {
+  position: relative;
+  bottom: 30px;
+}
 
 h4 {
+  vertical-align: super;
   color: tomato;
   text-decoration: line-through;
   font-size: 20px;
   position: relative;
   bottom: 15px;
-}
-h2{
-  color: slategray;
+
 }
 h3 {
-  color:slategray;
-  font-size: 35px;
+  vertical-align: super;
+  color: slategray;
+  font-size: 30px;
   position: relative;
   bottom: 30px;
 }
+
 span.discount{
   color:tomato;
 }
@@ -894,9 +906,10 @@ h5 {
   font-size: 18px;
   height: 70px;
   color: #fff;
-  background: linear-gradient(to right, #fcce6a 0%, #fcce6a 35%, #5dee8d 65%, #5dee8d 100%);
+  background: linear-gradient(to right, #a5e9d8 0%, #86e7bf 100%);
   font-family: 'Lato', sans-serif;
 }
+
 
 .s010 form .inner-form .input-field input.placeholder {
   color: #fff;
@@ -1088,25 +1101,27 @@ h5 {
   padding-right: 5px;
 }
 
-.s010 form .inner-form .advance-search .column .result-image{
-  height: 160px;
-  justify-self: center;
-}
-
 .s010 form .inner-form .advance-search .column{
+  height: inherit;
   float: left;
   width: 25%;
+}
+
+.s010 form .inner-form .advance-search .column .result-image{
+  height: 80%;
+  justify-self: center;
 }
 
 .s010 form .inner-form .advance-search .text-area{
   float: right;
   width: 75%;
+  height:100%;
 }
 
 .s010 form .inner-form .advance-search .text-area .result-name{
-  position: relative;
-  bottom: 15px;
+  position: relative;;
   text-decoration: underline;
+  bottom: 15px;
 }
 
 .s010 form .inner-form .advance-search .input-field {
@@ -1419,12 +1434,13 @@ h5 {
   </head>
   <body>
     <div class="s010">
+    <img class="logo" src="{% static '/images/SickkDealz.png' %}" height=100px align='left'>
       <form method="POST">
         {% csrf_token %}
         <div class="inner-form">
           <div class="basic-search">
             <div class="input-field">
-              <input id="search" type="text" placeholder="Type Keywords" name="search input"/>
+              <input id="search" type="text" placeholder="Find discounts now!" name="search input"/>
               <div class="icon-wrap">
                 <button class="our-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
@@ -1437,7 +1453,7 @@ h5 {
               </div>
             </div>
           </div>
-
+          {% if master %}
           {% for arr in master %}
 
             <div class="advance-search">
@@ -1446,14 +1462,19 @@ h5 {
                   <img class="result-image" src="{{ arr.2 }}" alt="">
                 </a>
               </div>
-              <div class="text-area">
-                          <h2 class="result-name"><a href="{{ arr.1 }}">{{ arr.0 }}</a></h2>
+              <div class="text-area" >
+                        <h2 class="result-name"><a href="{{ arr.1 }}">{{ arr.0 }}</a></h2>
                         <h4 class="regular-price">Regular: {{ arr.3 }}</h4>
-                        <h3 class="discount-name">SALE:   {{ arr.4 }} <span class="discount"> ({{ arr.6 }}%!)</span> </h3>
+                        <h3 class="discount-name">SALE:   {{ arr.4 }} <span class="discount"> ({{ arr.6 }}%!)</span> <img src="{% static '/images/'%}{{ arr.5 }}.png" height=30px align="right"> </h3>
                 </div>
             </div>
             <script>$("#temp").html("");</script>
             {% endfor %}
+            {% else %}
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+              <h1 align="center" >Looking for <i>Sickk Dealz?</i> </h1>
+              <h1 align="center">Well, stranger, you came to the right place!</h1>
+            {% endif %}
         </div>
       </form>
     </div>
