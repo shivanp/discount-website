@@ -101,6 +101,7 @@ pre {
  */
 a {
   background-color: transparent;
+  color:slategray;
   /* 1 */
   -webkit-text-decoration-skip: objects;
   /* 2 */
@@ -855,6 +856,34 @@ legend {
   position: relative;
 }
 
+
+
+h4 {
+  color: tomato;
+  text-decoration: line-through;
+  font-size: 20px;
+  position: relative;
+  bottom: 15px;
+}
+h2{
+  color: slategray;
+}
+h3 {
+  color:slategray;
+  font-size: 35px;
+  position: relative;
+  bottom: 30px;
+}
+span.discount{
+  color:tomato;
+}
+h5 {
+  color:tomato;
+  font-size: 35px;
+  position: relative;
+  bottom: 30px;
+}
+
 .s010 form .inner-form .input-field input {
   height: 100%;
   border: 0;
@@ -989,9 +1018,19 @@ legend {
 
 .s010 form .inner-form .advance-search {
   background: #fff;
-  padding: 40px;
-  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
+  padding: 20px;
+  /* border-style: solid; */
+  /* border: 1;
+  border-color: rgb(194, 194, 194); */
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  transition: 0.2s linear;
+  height: 200px;
+}
+
+.s010 form .inner-form .advance-search:hover {
+  background: rgb(240, 240, 240);
+  border-radius: 5px;
 }
 
 .s010 form .inner-form .advance-search .desc {
@@ -999,6 +1038,7 @@ legend {
   color: #555;
   display: block;
   margin-bottom: 26px;
+  height: auto;
 }
 
 .s010 form .inner-form .advance-search .row {
@@ -1009,24 +1049,24 @@ legend {
   -ms-flex-align: center;
       align-items: center;
   margin-bottom: 20px;
+  height: auto;
 }
 
 .s010 form .inner-form .advance-search .row.second {
-  margin-bottom: 46px;
+  margin-bottom: 40px;
+  height: auto;
 }
 
 .s010 form .inner-form .advance-search .row.third {
   margin-bottom: 0;
+  height: auto;
 }
 
 .s010 form .inner-form .advance-search .row.third .input-field {
   width: 100%;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  -ms-flex-align: center;
-      align-items: center;
+  height: auto;
 }
 
 .s010 form .inner-form .advance-search .row.third .input-field .result-count {
@@ -1039,11 +1079,33 @@ legend {
   width: 110px;
   color: #999;
   font-size: 14px;
+  height: auto;
 }
 
 .s010 form .inner-form .advance-search .row.third .input-field .result-count span {
   color: #333;
   padding-right: 5px;
+}
+
+.s010 form .inner-form .advance-search .column .result-image{
+  height: 160px;
+  justify-self: center;
+}
+
+.s010 form .inner-form .advance-search .column{
+  float: left;
+  width: 25%;
+}
+
+.s010 form .inner-form .advance-search .text-area{
+  float: right;
+  width: 75%;
+}
+
+.s010 form .inner-form .advance-search .text-area .result-name{
+  position: relative;
+  bottom: 15px;
+  text-decoration: underline;
 }
 
 .s010 form .inner-form .advance-search .input-field {
@@ -1208,22 +1270,21 @@ legend {
               </div>
             </div>
           </div>
-          <div class="advance-search">
-              <div class="row third">
-                  <div class="input-field">
-                    <div class="result-count">
-                      <span>{{ master|length }} </span>results found</div>
-                  </div>
+
+          {% for arr in master %}
+            <div class="advance-search">
+              <div class="column">
+                <a href="{{ arr.1 }}">
+                  <img class="result-image" src="{{ arr.2 }}" alt="">
+                </a>
+              </div>
+              <div class="text-area">
+                          <h2 class="result-name"><a href="{{ arr.1 }}">{{ arr.0 }}</a></h2>
+                        <h4 class="regular-price">Regular: {{ arr.3 }}</h4>
+                        <h3 class="discount-name">SALE:   {{ arr.4 }} <span class="discount"> ({{ arr.6 }}%!)</span> </h3>
                 </div>
             </div>
-          </div>
-          {% for arr in master %}
-            <a href="{{ arr.1 }}">
-              <img src="{{ arr.2 }}">
-            </a>
-            <a href="{{ arr.1 }}">{{ arr.0 }}</a>
-            <p>{{ arr.6 }}% discount by {{ arr.5 }}!</p>
-          {% endfor %}
+            {% endfor %}
         </div>
       </form>
     </div>

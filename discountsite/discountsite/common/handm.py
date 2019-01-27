@@ -10,15 +10,16 @@ def search(item):
     display = Xvfb()
     display.start()
     driver = webdriver.Firefox()
+    
     driver.get('https://www2.hm.com/en_gb/search-results.html?q={}'.format(searchTerm))
-    time.sleep(5)
-    driver.find_element_by_class_name('modalconfirm').click()
-    for i in range(8):
-        try:
-            driver.find_element_by_class_name('js-load-more').click()
-            time.sleep(2)
-        except:
-            continue
+    # time.sleep(5)
+    # driver.find_element_by_class_name('modalconfirm').click()
+    # for i in range(8):
+    #     try:
+    #         driver.find_element_by_class_name('js-load-more').click()
+    #         time.sleep(2)
+    #     except:
+    #         continue
     p_element = driver.find_elements_by_class_name('sale')
     for discPrice in p_element:
         main_element = discPrice.find_element_by_xpath('..').find_element_by_xpath('..').find_element_by_xpath('..').find_element_by_class_name('image-container').find_element_by_class_name('item-link')
