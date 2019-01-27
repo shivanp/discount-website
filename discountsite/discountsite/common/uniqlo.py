@@ -11,7 +11,7 @@ def search(item):
     display.start()
     driver = webdriver.Firefox()
     driver.get('https://www.uniqlo.com/uk/en/search-results?q={}'.format(searchTerm))
-    for i in range(8):
+    for i in range(2):
         try:
             driver.find_element_by_class_name('algolia-viewmore-link').click()
             time.sleep(1)

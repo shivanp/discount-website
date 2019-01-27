@@ -7,8 +7,8 @@ import requests
 def search(item):
     master_arr = []
     searchTerm = item
-    # display = Xvfb()
-    # display.start()
+    display = Xvfb()
+    display.start()
     driver = webdriver.Firefox()
     driver.get('https://www2.hm.com/en_gb/search-results.html?q={}'.format(searchTerm))
     # alert = driver.switch_to_alert()
@@ -19,10 +19,10 @@ def search(item):
         driver.find_element_by_class_name('modalconfirm').send_keys(Keys.ENTER)
     except:
         pass
-    for i in range(8):
+    for i in range(2):
         try:
             driver.find_element_by_class_name('js-load-more').click()
-            time.sleep(2)
+            time.sleep(1)
         except:
             continue
     # time.sleep(5)
@@ -42,5 +42,5 @@ def search(item):
         print("Discount Price:\t", discPrice.text)
         print()
     driver.quit()
-    # display.stop()
+    display.stop()
     return master_arr

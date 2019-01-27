@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" href="{% static '/images/SickkDealz.png' %}"
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1480,8 +1481,10 @@ h5 {
     </div>
 
     <script>
-      $("#search").keypress(function() {
+      $("#search").keypress(function(e) {
+        if(e.which == 13){
         $("#temp").html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-ellipsis"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>');
+        }
       });
     </script>
   </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
