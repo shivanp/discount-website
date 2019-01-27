@@ -25,7 +25,7 @@ def search(item):
             img = discPrice.find_element_by_xpath('..').find_element_by_xpath('..').find_element_by_class_name('algolia-prods-item-img-container').find_element_by_class_name('algolia-prods-item-img-original')
             regPrice = discPrice.find_element_by_xpath('..').find_element_by_class_name('reg-price')
             arr = [name.text, link.get_attribute('href'), img.get_attribute('src'),
-                    regPrice.text, discPrice.text]
+                    regPrice.text, discPrice.text, 'uniqlo']
             master_arr.append(arr)
             print("Name:\t\t", name.text)
             print("Link:\t\t", link.get_attribute('href'))

@@ -26,7 +26,7 @@ def search(item):
         name = main_element.get_attribute('title')
         img = main_element.find_element_by_class_name('item-image')
         regPrice = discPrice.find_element_by_xpath('..').find_element_by_class_name('regular')
-        arr = [name, link, img.get_attribute('src'), regPrice.text, discPrice.text]
+        arr = [name, link, img.get_attribute('src'), regPrice.text, discPrice.text, 'h&m']
         master_arr.append(arr)
         print("Name:\t\t", name)
         print("Link:\t\t", link)
