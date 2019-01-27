@@ -4,4 +4,9 @@ import discountsite.common
 
 def index(request):
     context = {}
-    return render(request, 'home/index.html', context)
+
+    if request.method == 'POST':
+        search_input = request.POST.get('search input', None)
+        return render(request, 'home/index.html', context)
+    else:
+        return render(request, 'home/index.html', context)
